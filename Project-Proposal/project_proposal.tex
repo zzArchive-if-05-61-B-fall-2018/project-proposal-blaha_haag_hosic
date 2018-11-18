@@ -1,6 +1,6 @@
 \documentclass[12pt]{scrartcl}
     
-    \usepackage{ucs}
+\usepackage{ucs}
     \usepackage[utf8x]{inputenc}
     \usepackage[T1]{fontenc}
     \usepackage[english]{babel}
@@ -15,7 +15,7 @@
         \begin{addmargin}[15pt]{15pt}
             #2
         \end{addmargin}
-        Date: #3
+        Until: #3
         \vspace*{18pt}
     }
 
@@ -31,7 +31,7 @@
         \begin{addmargin}[15pt]{15pt}
             #3
         \end{addmargin}
-        Date: #4
+        Until: #4
         \vspace*{18pt}
     }
     
@@ -55,8 +55,6 @@
     \usepackage{courier}
     \usepackage{url}
     
-    \newcommand{\Fhat}[2]{\hat{F_{#1}} = #2}
-    
     \usepackage{hyperref}
     \hypersetup{
       colorlinks=false,
@@ -75,44 +73,44 @@
 
     \section{Introduction}
     
-    There are a lot of personal organizer providers. 
-    These organizers are very similar in their functionality, but they have one thing in common, 
-    their functionalities are very limited. The personal organizers are kept very simple. It is
-    nearly not possible to set complex conditions, which are checked automatically.  
-    \newline
-    Some organizers have the functionality to share an appointment but it is not possible
-    to let the personal organizer find automatically an good appointment for you and your friends.
-    \newline 
-    That's why it's often hard and time-consuming to 
-    find a suitable date for yourself and your friends, where everyone has time.
-    \newline
-    Often appointments have conditions to be able to take place at all. 
-    \newline 
-    For example, a nice weather is needed to have a barbecue with his friends. 
-    \newline
-    There are also often cases where appointments are interdependent, 
-    so it may be that an appointment is not taking place because an appointment with 
-    which it was related could not take place.
-    
-    \pagebreak
+        There are a lot of personal organizer providers. 
+        These organizers are very similar in their functionality, but they have one thing in common, 
+        their functionalities are very limited. The personal organizers are kept very simple. It is
+        nearly not possible to set complex conditions, which are checked automatically.  
+        Some organizers have the functionality to share an appointment but 
+        with some personal organizer it is not possible to let the organizer automatically find a suitable date for all participants.
+        That is why it is often hard to find a suitable date for all participants.
+        For the distribution of appointments, there are other providers. Here is, for example
+        to mention doodle.
+
+        Often appointments have conditions to be able to take place at all. 
+        For example, a nice weather is needed to have a barbecue with his friends. 
+
+        There are also often cases where appointments are interdependent, 
+        so it may be that an appointment is not taking place because an appointment with 
+        which it was related could not take place.
+        
+        At an appointment for a lecture, the dependency exists that the lecturer
+        can meet this deadline. It could be the case that the lecturer becomes ill
+        and thereby the appointment fails.
+        There should be an easy way in the organizer to enter such cases and
+        to inform all involved.
+        \pagebreak
 
     \section{General Conditions and Constraints}
+        For our project we will use the Framework Ionic. This framework is based on the framework Angular and Apache Cordova.
+        This framework makes it possible to write an application for mobile devices. With the framework, the application should be programmed on the client side.
+        The focus here is on a version for Android.
 
-        For our project we are going to need 2 APIs to be able to provide complex conditions.
-        The first API is needed to get a the weather forecast. The API openweathermap is providing this functionality 
-        but for free use it has some restrictions, which can be found \href{https://openweathermap.org/price}{here}.
-        \newline
-        The second API is needed to calculate the time of the way, which is between 2 dates.
-        Google is providing an API for that. One of the major factors of our project is the accessability with the internet. 
-        The personal organizer will be available when the user's offline, but for example 
-        some functions like the group function want be available without internet connection. 
-        Due to the limited amount of time we will have to work on our
-        project we most likely will only be focusing on a mobile version for Android.
+        The server will use 2 APIs, one to poll the weather and another to calculate the time for the path.
 
-    \pagebreak
+        The API openweathermap is providing the weather functionality 
+        but for free use it has some restrictions, which can be found on \href{https://openweathermap.org/price}{https://openweathermap.org/price}.
+        In order to determine the time of the way between 2 dates the Google API is used.
+        \pagebreak
 
     \section{Project Objectives and System Concepts}
-        The personal organizers that exist today are just boring and do not offer people much. 
+
         Our goal is to create a new personal organizer that will attract the attention of many people with additional features.
         The new personal organizer should include features such as weather and route, friend function, grouping function, 
         profile and chat, rights system, dependency between appointments, lists and comments, showing birthdays of friends,
@@ -122,6 +120,25 @@
         delete appointment, push notifications, backup and synchronization of appointments (cloud) and local storage.
         After we have finished the basic functions of a personal organizer, we want to incorporate our additional features, which we have already mentioned, 
         and thus have the new personal organizer realized.
+
+        A user's account is there to manage the various groups and profiles. Furthermore, the user is by the
+        Account uniquely identifiable.
+        The profiles are there to save the configurations. There are several profiles because it can be the case that you do not always want to use the same configuration.
+        
+        A group can also set conditions to what extent a profile must be configured to join the group.
+        Furthermore, a group is able to distribute notifications to its members. 
+        The notifications are subdivided in importance levels and this make it possible to 
+        filter them.
+        The groups can be listed or unlisted. If a group is listed, it can be found using a search function of the application.
+        
+        There is also a functionality with which a user can announce what he is interested in.
+        As a result, people can sign up, who would have a suitable trip or other.
+        
+        Generally there should be a visibility for appointments.
+        The user should be able to set the settings through a configuration.
+        
+        Nursing reports should also be indicated as status. It should also be possible to determine
+        To what extent the users have access to the profile(s) of a other user.
     \pagebreak
 
     \section{Opportunities and Risks}
@@ -129,13 +146,17 @@
         Another risk is the usability for the user. Due to the multitude of functions, there is a potential risk that the user-friendliness of the project will be lost. 
         With our idea we want to get involved in clubs, groups of friends and private persons.
         fix. In addition, we want to reduce communication problems.
+
+       
+        Furthermore, the Framework Ionic is one that is constantly evolving. As a result, it may be necessary to switch to a newer version to be up-to-date.
+        This may mean that the existing code needs to be adapted to new conditions.
     \pagebreak
 
     \section{Planning}
 
     \vspace*{15pt}
 
-    The project will start on the October 30, 2018.
+    The project will start on the November 30, 2018.
 
     \subsection{Members}
     \begin{itemize}
@@ -168,7 +189,7 @@
     {
         The purpose of the prototype is to determine how the APIs and frameworks used work. As a result, the further course of action in the project can be better defined.
     }
-    {10.12.2018}
+    {30.12.2018}
                  
 
     \milestone{Prototype Server}
@@ -180,7 +201,7 @@
         Furthermore, there is an overview of how to implement the server.
     }
     {
-        15.12.2018
+        30.12.2018
     }
 
     \milestone{Client Core}
@@ -191,7 +212,7 @@
         The core should provide a good foundation upon which the rest of the application can build.
     }
     {
-        30.1.2019
+        30.2.2019
     }
     
     \milestone{Server Core}
@@ -202,7 +223,7 @@
         It should provide a good foundation upon which the rest of the server can build.
     }
     {
-        15.2.2019
+        30.2.2019
     }
 
     \milestonenogoal{Advanced Client} 
@@ -210,7 +231,7 @@
         The client core with additional functions.
     }
     {
-        15.3.2019
+        15.4.2019
     }
 
     \milestonenogoal{Advanced Server}
@@ -218,12 +239,12 @@
         The server with additional functions.
     }
     {
-        30.3.2019
+        30.4.2019
     }
 
     \milestonenogoal{Client GUI}
     {
-        A GUI for the Client.
+        Updated Client GUI
     }
     {
         20.4.2019
@@ -242,14 +263,14 @@
         Additional functions for the server.
     }
     {
-        19.6.2019
+        10.6.2019
     }
 
     \milestonenogoal{End of Project}
     {
-        It is the end of the project.
+        End of the project.
     }
     {
-        20.6.2019
+        15.6.2019
     }
 \end{document}
