@@ -1,0 +1,107 @@
+System specification
+Smart Personal Organizer
+
+Project Name: Smart Personal Organizer
+Project Manager: Simon Blaha
+Created on: 27/11/2018
+Document state: X	In progress
+			Released
+Version: V.1.0
+
+Content:
+1. Initial Situation and Goal
+1.1 Initial Situation and goal
+1.1.1 Application Domain
+1.2 Goal Definition
+2.Functional Requirements
+2.1 Use Case Diagrams
+2.2 Details
+3.Non-functional Requirements
+4.Quantity Structure
+5.System Architecture and Interfaces
+6.Acceptance Criteria
+7.References
+
+1.Initial Situation
+
+1.1 Initial Situation and goal
+
+Every person has appointments. Many people have a simple calendar where they can write their important dates to help organize this process.
+For example, people often forget someone else's birthday.
+The fact that you can miss important dates by writing them in a simple calendar, a calendar is necessary for the phone.
+So that such misadventures do not happen again, people who have an appointment calendar on their cell phone, receive notifications such as the birthday of another person.
+This process can be simplified by using a mobile organizer app.
+
+1.1.1 Application domain
+
+Many people add an important appointment to their appointment calendar after they make one out.
+On the day when the people have an important appointment and want to go for a barbecue, for example, they receive a notification as to whether it is optimal weather for a barbecue.
+Through this "Warning" the persons know whether they should go to the barbecue or not and can write by built-in group chats the other "Grillteilnehmer" that they cancel the appointment.
+
+1.2 Goal Definition
+    Our goal is to create a new personal organizer that will attract the attention of many people with additional features.
+   
+    We want to help people who basically forget appointments.
+    The new personal organizer have attractive new features such as weather and route, friend function, grouping function, 
+       
+    profile and chat, rights system, dependency between appointments, lists and comments, showing birthdays of friends,
+       
+    editing appointments, notifying the group, matching the appointments over the whole group included.
+
+    For example, with these new features, people who like go to "grill" can see the weather for this day.
+
+4 Quantity Structure
+
+The user will have an e-mail address, a password, an username and an userID and will be stored independently
+in a database. Additionally a user will have a list of joined group and a second list for his friends.
+Like a single user each group will have it's data stored in a database such as a groupID, group name,
+a list of its members, messages, events and its informations.
+
+
+6 Acceptance Criteria
+
+***************IN EINER TABELLE***************
+6.1 AC001
+
+	Test step				Expected Behaviour
+Add, remove or change an event		Event will be added, removed or changed
+
+Save an Event without a Name		Don't save until the name has been specified
+
+Add more informations to an event	Save named informations to the event
+
+Change Color of an event		Color changes
+
+Add location to an event		Do not save until the location name does exist
+
+Change data of an event			Changes save
+
+Add, remove or change an event 		event reminder will be added, changed or removed
+reminder
+
+6.2 AC002
+
+	Test step				Expected Behaviour
+Join a Group				Group will be added to the group list and group planner will
+					be visible to own account
+
+Add, remove or change group event	Will be added for everyone as long as the event is
+					valid
+
+Add more information to an event	Information will be available for everyone
+
+Leave a Group				Group will be rmoved from the group list
+
+6.3 AC003
+
+	Test step				Epected Behaviour
+Go to profile				Profile will be shown
+
+Go to group list			group list will be shown
+
+Try to change userID			Will not change
+
+Go to invitaions			show invitations
+
+Reject invitation			Invitation will be rejected and removed from list
+
