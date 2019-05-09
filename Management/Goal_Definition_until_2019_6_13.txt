@@ -1,0 +1,34 @@
+Goals:
+    until 16.05.2019:
+        Login on Rest-Server
+        GUI Login
+        GUI Calendar View create/delete appointments
+    
+    until 23.05.2019:
+        Create and Delete appointments on Rest Server
+        UI Register user
+        Register User on Rest-Server
+
+    until 30.05.2019:
+        UI to create/delete/edit Groups
+        REST Server create/delete/edit Group
+
+    until 06.06.2019:
+        UI for groupmanagement
+        REST-Server add groupmanagement support
+
+    until 13.06.2019:
+        Buffer
+
+
+Descriptions:
+    Login on Rest-Server:
+        Der Rest-Server soll Login-Daten als JSON entgegennehmen und falls diese, in der Datenbank vorliegen, dem Sender einen gültigen Token zurückschicken und diesen
+        in der Datenbank abspeichern.
+
+    GUI Login:
+        Eine Benutzeroberfläche mit 2 Eingabefelder für Password und Benutzername. 
+        Die eingegeben Daten sollten bei Bestätigung durch einen Login-Button einen Login am REST-Server durchführen.
+
+    GUI Calendar View create/delete appointments;
+        Es sollte ein Kalendar umgesetzt werden, bei dem Termine eingetragen und gelöscht werden können.
