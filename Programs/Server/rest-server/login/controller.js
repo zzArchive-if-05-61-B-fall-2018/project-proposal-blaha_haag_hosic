@@ -1,13 +1,22 @@
 const model = require('./model');
 
 function loginAction(request, response) {
-    // test if pw and un is correct
-    // send token or error code
-    // send token if correct
-    console.log(request.body);
-    response.json(model.token);
-    //response.status(500).json(error)
-}
+    jsonRequest = request.body;
+
+    if(jsonRequest.id === undefined || jsonRequest.password === undefined) {
+        response.status(500).json('{"error": "Unvalid request"}');
+        return;
+    }
+
+    console.log("Login try from: " + jsonRequest.id);
+    model.getToken(jsonRequest.id, jsonRequest.password).then(function(result) {
+        response.json(result);
+        console.log("Login succeeded");
+    }, function(error) {
+        response.status(500).json(error);
+        console.log("Login failed");
+    });
+} 
 
 module.exports = {
     loginAction,

@@ -1,0 +1,1 @@
+module.exports = { 'userDatabase': 'mongodb://localhost/userlogin' };

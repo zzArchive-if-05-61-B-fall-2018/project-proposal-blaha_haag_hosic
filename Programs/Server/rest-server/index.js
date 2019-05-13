@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 app.use(morgan('common', { immediate: true }));
 app.use(bodyParser.json());
 
-app.get('/', (request, response) => response.redirect('/login'));
 app.use('/login', loginRouter);
 
 
