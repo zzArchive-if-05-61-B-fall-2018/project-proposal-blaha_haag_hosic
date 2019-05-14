@@ -5,8 +5,15 @@ Zum Testen:
     3. Server starten mit: node index.js
     
     Login:
-        curl -d '{"id":"<userid>", "password":"<password>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/login
+        curl -d '{"username":"<username>", "password":"<password>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/user/login
     Register:
-        curl -d '{"username":"<username>", "password":"<password>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/register
-
+        curl -d '{"username":"<username>", "password":"<password>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/user/register
+    Logout:
+        curl -d '{"username":"<username>", "token":"<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/user/logout
+    CreateAppointment:
+        curl -d '{"appointment": {"username": "<username>", "date": "<date>", "duration": "<number>", "name": "<name>"}, "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/create
+    DeleteAppointment:
+        curl -d '{ "username": "<username>", "token": "<token>", "appointmentid": "<appointmentid>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/delete
+    EditAppointment:
+        curl -d '{"appointment": {"username": "<username>"[, "date": "<date>"][, "duration": "<number>"][, "name": "<name>"]}, "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/edit
 

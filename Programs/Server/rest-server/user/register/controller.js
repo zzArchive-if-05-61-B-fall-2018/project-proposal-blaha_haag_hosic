@@ -11,9 +11,9 @@ function registerAction(request, response) {
 
     model.registerUser(jsonRequest.username, jsonRequest.password).then(function(result) {
         response.json(result);
-        console.log("Benutzer anglegt: " + result._id + " " + result.username);
+        console.log("Benutzer anglegt: " + result);
     }, function(error) {
-        console.log("Benutzer konnte nicht angelegt werden: ");
+        console.log("Benutzer konnte nicht angelegt werden: " + JSON.stringify(request.body));
         response.status(500).json(error);
     });
 } 
