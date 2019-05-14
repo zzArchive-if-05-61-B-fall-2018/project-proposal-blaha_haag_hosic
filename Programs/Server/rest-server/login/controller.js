@@ -4,6 +4,7 @@ function loginAction(request, response) {
     jsonRequest = request.body;
 
     if(jsonRequest.id === undefined || jsonRequest.password === undefined) {
+        console.log("Unvalid request: " + JSON.stringify(request.body));
         response.status(500).json('{"error": "Unvalid request"}');
         return;
     }

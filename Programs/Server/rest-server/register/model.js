@@ -10,7 +10,7 @@ mongoose.connect(userDatabase, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log("User Login connected to db");
+    console.log("User Register conntected to db");
 });
 
 /*
@@ -19,35 +19,25 @@ bcryp.hash("Wurst", saltRounds, function(err, hash) {
     if(err) {
         console.log(err);
     } else {
-        let newUser = new User({ name: "Hans", password: hash });
+        let newUser = new User({ username: "Hans", password: hash });
         newUser.save();
         console.log("ID des erstellten Users: " + newUser._id);
     }
 });
 */
 
-function generateToken() {
-    let uid = randtoken.uid;
-    let token = uid(16);
-    return token;
-}
-
-function getToken(id, password) {
-    const token = generateToken();
+function registerUser(username, password) {
     return new Promise(function(resolve, reject) {
-        User.findById(id, function(err, user) {
+        bcryp.hash(password, saltRounds, function(err, hash) {
             if(err) {
-                reject({error: "Invalid userid or password"});
+                reject(err);
             } else {
-                const res = bcryp.compareSync(password, user.password);
-                if(res && user._id == id) {
-                    user.token = token;
-                    user.save(); 
-                    resolve({ token: user.token });
-                } else reject({error: "Invalid userid or password"});
+                let newUser = new User( { username: username, password: hash } );
+                newUser.save();
+                resolve({ _id: newUser._id, username: newUser.username });
             }
         });
     });
 }
 
-module.exports = { getToken };
+module.exports = { registerUser };

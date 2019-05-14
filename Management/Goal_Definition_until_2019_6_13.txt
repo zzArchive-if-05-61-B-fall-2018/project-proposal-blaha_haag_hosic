@@ -6,6 +6,7 @@ Goals:
     
     until 23.05.2019:
         Create and Delete appointments on Rest Server
+        UI to create and delete appointments
         UI Register user
         Register User on Rest-Server
 
