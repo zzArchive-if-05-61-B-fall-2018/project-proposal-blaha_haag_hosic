@@ -15,4 +15,5 @@ Zum Testen:
         curl -d '{ "username": "<username>", "token": "<token>", "appointmentid": "<appointmentid>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/delete
     EditAppointment:
         curl -d '{"appointment": {"username": "<username>"[, "date": "<date>"][, "duration": "<number>"][, "name": "<name>"]}, "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/edit
-
+    CheckIfUserExists:
+        curl -d '{"username":"<username>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/user/check
