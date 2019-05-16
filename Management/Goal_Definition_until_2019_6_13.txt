@@ -33,3 +33,23 @@ Descriptions:
 
     GUI Calendar View create/delete appointments;
         Es sollte ein Kalendar umgesetzt werden, bei dem Termine eingetragen und gelöscht werden können.
+
+
+    Create and Delete appointments on Rest Server 
+        Per Post-Request auf die eine bestimmte URLs sollten Termine gelöscht, editiert oder erstellt werden. 
+        Die Termine werden mit UserId gespeichert und können nur von dem entsprechenen Benutzer, der sie erstellt hat, gelöscht/editiert werden.
+    
+    Register User on Rest-Server:
+        Per Post-Request sollte man ein Json Formular schicken können mit username sowie Passwort.
+        Es sollte ein Benutzer erstellt werden, falls noch kein Benutzer bereits mit dem Namen existiert. 
+        Des Weiteren sollte ein Fehler zurückgegeben werden, falls das Erstellen fehlschägt.
+    
+    UI to create and delete appointments:
+        Man wählt bei dem Terminansicht einen Tag aus und es werden alle Termine an dem Tag angezeigt. 
+        Per Create-Button kann man einen neuen Termin erstellen.
+        Des Weiteren kann man bereits vorhandene Termine auswählen und diese löschen oder editieren.
+
+    Register User UI: 
+        Es gibt einen Button Register, wird dieser geklickt, so öffnet sich ein Formular, um einen Benutzer zu erstellen.
+        Bei dem Formular ist ein Benutzername sowie das Passwort anzugeben.
+        
