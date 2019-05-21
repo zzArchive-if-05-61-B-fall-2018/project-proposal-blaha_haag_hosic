@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const user = require('./user/index');
 const appointment = require('./appointment/index');
-
+console.log(JSON.stringify(new Date()));
 app.use(morgan('common', { immediate: true }));
 app.use(bodyParser.json());
 

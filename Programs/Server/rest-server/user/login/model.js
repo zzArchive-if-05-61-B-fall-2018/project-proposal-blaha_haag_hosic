@@ -9,7 +9,7 @@ require('../../database/config');
 
 function generateToken() {
     let uid = randtoken.uid;
-    let token = uid(256);
+    let token = uid(4);
     return token;
 }
 

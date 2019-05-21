@@ -34,12 +34,13 @@ function deleteAppointmentAction(request, response) {
 
 function editAppointmentAction(request, response) {
     const jsonRequest = request.body;
-    if(jsonRequest.appointment === undefined || jsonRequest.appointment.username === undefined || jsonRequest.token === undefined) {
+    const appointment = jsonRequest.appointment;
+    if(appointment === undefined || appointment.username === undefined || jsonRequest.token === undefined || jsonRequest.appointmentId === undefined) {
         console.log("Unvalid request: " + JSON.stringify(request.body));
         response.status(500).json({error: "Unvalid request"});
         return;
     }
-    model.editAppointment(jsonRequest.appointment, jsonRequest.appointment.username, jsonRequest.token).then(function(result) {
+    model.editAppointment(appointment, appointment.username, jsonRequest.token, jsonRequest.appointmentId).then(function(result) {
         console.log(result);
         response.json(result);
     }, function(error) {

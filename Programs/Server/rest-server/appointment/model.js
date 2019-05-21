@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
-const appointmentSchema = require('../database/models/appointment/model');
 const User = require('../database/models/user/model');
-const Appointment =  mongoose.model('Appointment', appointmentSchema);
+const Appointment =  require('../database/models/appointment/model');
 
 // Connect to database
 require('../database/config');
@@ -26,14 +24,21 @@ function deleteAppointment(username, token, appointmentId) {
     return new Promise(function(resolve, reject) {
         User.findOne( {username: username}, function(error, user) {
             if(error) {
-                reject({error: error});
+                reject({error: "Appointment could not be deleted"});
             } else {
                 if(user !== null && user.token === token && user.token !== null) {
-                    Appointment.findByIdAndDelete(appointmentId, function(error, result) {
-                        if(error || result.username !== username) {
-                            reject(error);
+                    Appointment.findOne({ username: username, _id: appointmentId }, function(error, result) {
+                        if(error || result === null) {
+                            reject("Could not delete appointment");
                         } else {
-                            resolve({ result: "deleted appointment"} );
+                            Appointment.findByIdAndDelete(result._id, function(error, result) {
+                                if(error) {
+                                    reject(error);
+                                } else {
+                                    resolve({ result: "deleted appointment"} );
+                                }
+                            });
+                            
                         }
                     });
                 } else reject({error: "Invalid token" });
@@ -42,18 +47,27 @@ function deleteAppointment(username, token, appointmentId) {
     });
 }
 
-function editAppointment(appointment, username, token) {
+function editAppointment(appointment, username, token, appointmentId) {
     return new Promise(function(resolve, reject) {
-        User.findById(username, function(error, userResult) {
-            if(error || userResult.token !== token || userResult.token === null) {
-                reject(error);
+        User.findOne({username: username }, function(error, userResult) {
+            if(error || userResult === null || userResult.token !== token || userResult.token === null) {
+                reject({error: "Could find the user"});
                 return;
-            }
-            Appointment.findByIdAndUpdate(appointmentId, {$set: appointment }, function(error, appointmentResult) {
-                if(error || appointmentResult.username !== username) {
-                    reject(error);
+            } 
+            Appointment.findById(appointmentId, function(error, appointmentResult) {
+                if(error || appointmentResult === null) {
+                    console.log(appointmentResult);
+                    reject({error: "Could not edit appointment"});
                 } else {
-                    resolve(result);
+                    if(appointment.name !== undefined)
+                        appointmentResult.name = appointment.name;
+                    if(appointment.duration !== undefined)
+                        appointmentResult.duration = appointment.duration;
+                    if(appointment.date !== undefined)
+                    appointmentResult.date = appointment.date;
+                    
+                    appointmentResult.save();
+                    resolve({result: "Edited appointment"});
                 }
             });
         });
