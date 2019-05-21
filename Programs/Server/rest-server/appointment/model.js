@@ -64,7 +64,7 @@ function editAppointment(appointment, username, token, appointmentId) {
                     if(appointment.duration !== undefined)
                         appointmentResult.duration = appointment.duration;
                     if(appointment.date !== undefined)
-                    appointmentResult.date = appointment.date;
+                        appointmentResult.date = appointment.date;
                     
                     appointmentResult.save();
                     resolve({result: "Edited appointment"});
