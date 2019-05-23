@@ -13,6 +13,7 @@ Goals:
     until 30.05.2019:
         UI to create/delete/edit Groups
         REST Server create/delete/edit Group
+        REST get all appointments
 
     until 06.06.2019:
         UI for groupmanagement
@@ -53,4 +54,19 @@ Descriptions:
     Register User UI: 
         Es gibt einen Button Register, wird dieser geklickt, so öffnet sich ein Formular, um einen Benutzer zu erstellen.
         Bei dem Formular ist ein Benutzername sowie das Passwort anzugeben.
+
+
+
+    UI to create/delete/edit Groups:
+        Man wählt unter Account "Gruppen" aus. Hier werden die Gruppen gelistet.
+        Wenn man einen auswählt, so kann man diesen löschen bzw. editieren. 
+        Es gibt einen Button create, mit dem eine Gruppe erstellt werden kann.
+        Je nach Option wird das entsprechende Formular bzw. Dialog aufgerufen.
+
+    REST Server create/delete/edit Group:
+        Es sollten POST-Request für das Löschen/Editieren/Erstellen von Gruppen möglich sein.
+
+    REST get all appointments:
+        Es sollte ein Post-Request möglich sein, welcher alle Termine des Users zurückgibt, der den Post-Request geschickt hat.
+
         
