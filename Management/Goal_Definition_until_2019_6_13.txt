@@ -11,16 +11,17 @@ Goals:
         Register User on Rest-Server
 
     until 30.05.2019:
-        UI to create/delete/edit Groups
-        REST Server create/delete/edit Group
+        UI to create and delete appointments
+        UI Register user
         REST get all appointments
+        REST Server create/delete/edit Group
 
     until 06.06.2019:
+        UI to create/delete/edit Groups
+        
+    until 13.06.2019:
         UI for groupmanagement
         REST-Server add groupmanagement support
-
-    until 13.06.2019:
-        Buffer
 
 
 Descriptions:
