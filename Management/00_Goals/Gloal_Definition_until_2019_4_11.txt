@@ -1,0 +1,18 @@
+Goal:
+    Generelle Terminplanung
+
+Generelle Terminplanung: 
+    Erstellen, Löschen und Editieren sowie Anzeigen von Terminen über eine Benutzeroberfläche. 
+    Die Termine sollten auf einem Server gespeichert sowie von dort abgefragt werden. 
+
+bis 28.3.2019
+    Benutzeroberfläche für das Eingeben von Terminen.
+
+bis 5.4.2019
+    Speicherung der Termine auf einem Server. 
+
+bis 11.4.2019 
+    Benutzeroberfläche für das Editieren und Löschen von Terminen.
+    Abfrage der Termine von einem Server mithilfe des Clientprogramms.
+    Benutzeroberfläche für das Anzeigen von Terminen 
+    
