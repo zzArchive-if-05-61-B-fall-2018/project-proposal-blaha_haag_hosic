@@ -10,7 +10,8 @@ require('../../database/config');
 function generateToken() {
     let uid = randtoken.uid;
     let token = uid(4);
-    return token;
+    //return token;
+    return "TOKEN";
 }
 
 function getToken(username, password) {

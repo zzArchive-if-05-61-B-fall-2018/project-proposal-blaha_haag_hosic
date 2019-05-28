@@ -49,6 +49,22 @@ function editAppointmentAction(request, response) {
     });
 }
 
+function getAllAppointmentsFromUserAction(request, response) {
+    const jsonRequest = request.body;
+    if(jsonRequest !== undefined && jsonRequest.username !== undefined && jsonRequest.token !== undefined){
+        model.getAllAppointmentsFromUser(jsonRequest.username, jsonRequest.token).then(function(result) {
+            console.log(jsonRequest.username + " got all appointments.");
+            response.json(result);
+        }, function(error) {
+            console.log(jsonRequest.username + " tried to get all appointments. Error: " + JSON.stringify(error));
+            response.json(error);
+        });
+    } else {
+        console.log("Unvalid request: " + JSON.stringify(request.body));
+        response.status(500).json({error: "Unvalid request"});
+    }
+}
+
 module.exports = {
-    createAppointmentAction, editAppointmentAction, deleteAppointmentAction
+    createAppointmentAction, editAppointmentAction, deleteAppointmentAction, getAllAppointmentsFromUserAction
 };

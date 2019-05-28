@@ -75,6 +75,28 @@ function editAppointment(appointment, username, token, appointmentId) {
     });
 }
 
+function getAllAppointmentsFromUser(username, token) {
+    return new Promise(function(resolve, reject) {
+        User.findOne({username: username}, function(error, user) {
+            if(error) {
+                console.log(error);
+                reject(error);
+            } else
+            if(user !== null && user.token == token) {
+                
+                Appointment.find({ username: username }, function(error, appointments) {
+                    if(error) {
+                        console.log(error);
+                        reject(error);
+                    } else
+                        resolve(appointments);
+                });
+            } else {
+                reject( {error: "Username or password is wrong" });
+            }
+        });
+    });
+}
 
 
-module.exports = { createAppointment, deleteAppointment, editAppointment };
+module.exports = { createAppointment, deleteAppointment, editAppointment, getAllAppointmentsFromUser };
