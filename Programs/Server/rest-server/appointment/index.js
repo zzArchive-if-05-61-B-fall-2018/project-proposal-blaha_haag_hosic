@@ -4,8 +4,8 @@ const {createAppointmentAction, deleteAppointmentAction, editAppointmentAction, 
 
 router.post('/create', createAppointmentAction);
 router.post('/delete', deleteAppointmentAction);
-router.post('/edit', editAppointmentAction);
-router.post("/getAll", getAllAppointmentsFromUserAction);
+router.post('/addMember', editAppointmentAction);
+router.post("/getGroup", getAllAppointmentsFromUserAction);
 
 router.use('*', function(req, res) {
     res.status(500).json({ error: "Unvalid route" });
