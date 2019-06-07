@@ -16,13 +16,11 @@ Goals:
         REST get all appointments
 
     until 06.06.2019:
-        UI to create/delete/edit Groups 
-        REST-Server add groupmanagement support 1
-        REST Server create/delete/edit Group
+        UI to create/delete/edit Groups 1
         
     until 13.06.2019:
-        UI for groupmanagement
-        REST-Server add groupmanagement support 2
+        REST Server create/delete/edit Groups 2
+        UI to create/delete/edit Groups 2
 
 
 Descriptions:
@@ -70,7 +68,7 @@ Descriptions:
 
 
 
-    REST Server create/delete/edit Group:
+    REST Server create/delete/edit Groups:
         Es sollten POST-Request für das Löschen/Editieren/Erstellen von Gruppen möglich sein.
 
         
