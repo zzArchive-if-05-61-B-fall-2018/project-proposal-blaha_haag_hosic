@@ -11,9 +11,9 @@ function createGroup(username, token, group) {
                 reject({error: error});
             } else {
                 if(user !== null && user.token === token && user.token !== null) {
-                    const groupS = new Appointment(group);
+                    const groupS = new group(group);
                     groupS.save();
-                    resolve(appointment);
+                    resolve(group);
                 } else reject({error: "Invalid token" });
             }
         });
@@ -27,11 +27,11 @@ function deleteGroup(username, token, groupId) {
                 reject({error: "Group could not be deleted"});
             } else {
                 if(user !== null && user.token === token && user.token !== null) {
-                    Appointment.findOne({ username: username, _id: appointmentId }, function(error, result) {
+                    Group.findOne({ username: username, _id: groupId }, function(error, result) {
                         if(error || result === null) {
                             reject("Could not delete Group");
                         } else {
-                            Appointment.findByIdAndDelete(result._id, function(error, result) {
+                            Group.findByIdAndDelete(result._id, function(error, result) {
                                 if(error) {
                                     reject(error);
                                 } else {
@@ -47,26 +47,26 @@ function deleteGroup(username, token, groupId) {
     });
 }
 
-function addMember(appointment, username, token, appointmentId) {
+function addMember(group, username, token, groupId) {
     return new Promise(function(resolve, reject) {
         User.findOne({username: username }, function(error, userResult) {
             if(error || userResult === null || userResult.token !== token || userResult.token === null) {
                 reject({error: "Could not find the user"});
                 return;
             } 
-            Appointment.findById(appointmentId, function(error, appointmentResult) {
-                if(error || appointmentResult === null) {
-                    console.log(appointmentResult);
+            Group.findById(groupId, function(error, groupResult) {
+                if(error || groupResult === null) {
+                    console.log(groupResult);
                     reject({error: "Could not add member"});
                 } else {
-                    if(appointment.name !== undefined)
-                        appointmentResult.name = appointment.name;
-                    if(appointment.duration !== undefined)
-                        appointmentResult.duration = appointment.duration;
-                    if(appointment.date !== undefined)
-                        appointmentResult.date = appointment.date;
+                    if(group.name !== undefined)
+                        groupResult.name = group.name;
+                    if(group.duration !== undefined)
+                        groupResult.duration = group.duration;
+                    if(group.date !== undefined)
+                        groupResult.date = group.date;
                     
-                    appointmentResult.save();
+                    groupResult.save();
                     resolve({result: "Added member"});
                 }
             });
@@ -84,12 +84,12 @@ function getGroup(username, token) {
             } else
             if(user !== null && user.token == token) {
                 
-                Appointment.find({ username: username }, function(error, appointments) {
+                group.find({ username: username }, function(error, groups) {
                     if(error) {
                         console.log(error);
                         reject(error);
                     } else
-                        resolve(appointments);
+                        resolve(groups);
                 });
             } else {
                 reject( {error: "Username or password is wrong" });

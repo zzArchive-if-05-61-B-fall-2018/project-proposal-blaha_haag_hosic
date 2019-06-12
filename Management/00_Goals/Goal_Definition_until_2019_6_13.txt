@@ -16,11 +16,11 @@ Goals:
         REST get all appointments
 
     until 06.06.2019:
-        UI to create/delete/edit Groups 1
+        Utility and project structure change
         
     until 13.06.2019:
-        REST Server create/delete/edit Groups 2
-        UI to create/delete/edit Groups 2
+        REST Server create/delete/edit Groups 
+        UI to create/delete/edit Groups 
 
 
 Descriptions:
@@ -66,7 +66,8 @@ Descriptions:
         Es gibt einen Button create, mit dem eine Gruppe erstellt werden kann.
         Je nach Option wird das entsprechende Formular bzw. Dialog aufgerufen.
 
-
+    Utility and project structure change:
+        Ändern der Projektstruktur und Script, um die Datenbank mit Testdaten zu befüllen.
 
     REST Server create/delete/edit Groups:
         Es sollten POST-Request für das Löschen/Editieren/Erstellen von Gruppen möglich sein.
