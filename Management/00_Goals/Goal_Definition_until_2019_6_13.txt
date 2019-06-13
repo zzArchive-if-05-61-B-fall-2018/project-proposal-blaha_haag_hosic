@@ -19,8 +19,12 @@ Goals:
         Utility and project structure change
         
     until 13.06.2019:
-        REST Server create/delete/edit Groups 
-        UI to create/delete/edit Groups 
+        REST Server create/delete/edit Groups 1
+        UI to create/delete/edit Groups 1
+    
+    until 20.06.2019:
+        REST Server create/delete/edit Groups 2
+        UI to create/delete/edit Groups 2
 
 
 Descriptions:
