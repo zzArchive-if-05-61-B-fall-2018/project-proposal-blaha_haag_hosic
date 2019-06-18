@@ -1,0 +1,83 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}  
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\renewcommand{\baselinestretch}{1.15} 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\headmark}
+\ifoot[]{\author}
+\ofoot[]{\pagemark}
+\setheadsepline[\textwidth]{0.1pt}
+\setkomafont{pageheadfoot}{\sffamily}
+\setkomafont{pagenumber}{\bfseries}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Manual for Rest-Server}
+\author{Johann Haag, Tarik Hosic und Simon Blaha}
+\date{20.12.2018, Leonding}
+
+
+\begin{document}
+    \maketitle
+    \begin{flushleft}
+    \begin{tabular}{|l|l|}
+    \hline
+    Project Name & Smart Organizer \\ \hline
+    Project Leader & Simon Blaha \\ \hline
+    Version & 1.0\\ \hline
+    Document state & In process \\ \hline
+    \end{tabular}
+    \end{flushleft}
+
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+
+    \section{Installation}
+    \subsection{Aufsetzen der MongoDB}
+        Eine MongoDB kann standardmäßig auf den Computer installiert werden. Es bietet sich auch die Möglichkeit an, die MongoDB per Docker zu betreiben.
+        Wenn sie die MongoDB auf den Rechner installieren möchten, sehen sie folgenden Link .....
+        Falls sie Docker verwenden möchten, dann sehen sie auf folgender Seite nach ....
+
+    \section{Inbetriebnahme des Rest-Servers}
+        Um den Server zu starten gibt es mehrere Wege. 
+        Zum einen können sie per CMD in das Root-Verzeichnis des Servers wechseln und node index.js ausführen oder 
+        sie führen das Script run_server.sh aus. Hierbei wird jedoch die Skriptsprache Bash benötigt.
+        Bei der Inbetriebnahme werden automatisch die benötigten Collections auf der MongoDB erstellt. 
+        Es wird im Log ausgegeben, ob ein Fehler aufgetreten ist.
+        Der Server kann einfach mit STRG+C im Terminal beendet werden.
+
+    \section{Konfiguration}
+        In der Conifg.json Datei des Servers können Einstellungen des Servers geändert werden.
+        So kann hier die Portnummer sowie der Pfad zur MongoDB geändert werden.
+        Bei der Standardinstallation ist immer Localhost und der standard Port für MongoDB eingetragen.
+
+    \section{Testen der Installation}
+        Im Ordner des Rest-Servers liegt ein Script namens test_rest_server.sh vor.
+        Dieser Script kann nur auf Betriebssystemen verwendet werden, die das Programm ... installiert haben sowie die Skriptsprache Bash unterstützen.
+        Wenn sie diesen Script verwenden, werden Testdaten an den Rest-Server geschickt und die abgefragt.
+        Deswegen ist es gut, wenn man eine eigene Datenbank für das Testen erstellt.
+        Um die Testdaten wieder zu löschen, ist es am besten die erstellten Collections der MongoDB zu löschen.
+
+    \section{Troubleshooting}
+        \subsection{Keine Verbindung zur Datenbank möglich}
+
+%------------------------------------------------------------------------%
+\end{document}
