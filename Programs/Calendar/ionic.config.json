@@ -1,0 +1,8 @@
+{
+  "name": "Calendar",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "4ce35cc2"
+}
