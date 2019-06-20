@@ -1,0 +1,73 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}  
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\renewcommand{\baselinestretch}{1.15} 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\headmark}
+\ifoot[]{\author}
+\ofoot[]{\pagemark}
+\setheadsepline[\textwidth]{0.1pt}
+\setkomafont{pageheadfoot}{\sffamily}
+\setkomafont{pagenumber}{\bfseries}
+
+
+\title{Smart Personal Organizer}
+\author{Johann Haag, Tarik Hosic und Simon Blaha}
+\date{18.6.2019, Leonding}
+
+
+\begin{document}
+    \maketitle
+    \begin{flushleft}
+    \begin{tabular}{|l|l|}
+    \hline
+    Project Name & Smart Organizer \\ \hline
+    Project Leader & Simon Blaha \\ \hline
+    Version & 1.0\\ \hline
+    Document state & In process \\ \hline
+    \end{tabular}
+    \end{flushleft}
+
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+
+
+    \section{Tests}                             
+    \subsection{REST Server}
+    \subsubsection{Test 1 - Register User}
+        \begin{tabular}{|L{2cm}|L{1.2cm}|L{11cm}|} 
+            \hline 
+            \cellcolor[gray]{0.5}\textcolor{white}{Test} & \cellcolor[gray]{0.5}\textcolor{white}{Result} & \cellcolor[gray]{0.5}\textcolor{white}{Comment if failed} \\ \hline
+            T1 &  passed & \\  \hline
+            T2 &  passed & \\  \hline
+            T3 &  passed & \\  \hline
+            T4 &  passed & \\  \hline
+            T5 &  passed & \\  \hline
+            T6 &  passed & \\  \hline
+            T7 &  passed & \\  \hline
+            T8 &  passed & \\  \hline
+            T9 &  passed & \\  \hline
+            T10 & passed & \\  \hline
+            T11 & failed & It is not working on every path. Sometimes it does not send an error on an invalid path.\\  \hline
+            T12 & failed & The server is not yet able to handle invalid JSON objects.\\  \hline
+        \end{tabular}
+
+\end{document}
