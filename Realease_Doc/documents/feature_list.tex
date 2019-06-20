@@ -1,0 +1,188 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}  
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\renewcommand{\baselinestretch}{1.15} 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\headmark}
+\ifoot[]{\author}
+\ofoot[]{\pagemark}
+\setheadsepline[\textwidth]{0.1pt}
+\setkomafont{pageheadfoot}{\sffamily}
+\setkomafont{pagenumber}{\bfseries}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Features}
+\author{Johann Haag, Tarik Hosic und Simon Blaha}
+\date{18.6.2019, Leonding}
+
+
+\begin{document}
+    \maketitle
+    \begin{flushleft}
+    \begin{tabular}{|l|l|}
+    \hline
+    Project Name & Smart Organizer \\ \hline
+    Project Leader & Simon Blaha \\ \hline
+    Version & 1.0\\ \hline
+    Document state & In process \\ \hline
+    \end{tabular}
+    \end{flushleft}
+
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+
+    \section{Feature List}
+    \subsection{Rest-Server}
+    \begin{itemize}
+        \item Create appointment on Rest-Server
+        \item Edit appointment on Rest-Server
+        \item Delete appointment on Rest-Server
+        \item Create group on Rest-Server
+        \item Delete group on Rest-Server
+        \item Get all groups from user
+        \item Get all appointments from user
+        \item Login user 
+        \item Logout user 
+        \item Check user
+    \end{itemize}
+    \subsection{CalendarGui}
+    \begin{itemize}
+        \item Create appointments
+        \item Delete appointments
+        \item Edit appointments
+        \item Select appointments
+        \item Show appointments
+        \item Calendar Views
+    \end{itemize}
+    \subsection{Login}
+    \begin{itemize}
+        \item User interface for logging in and registering
+    \end{itemize}
+    
+
+    \section{Feature Descriptions}
+    \subsection{Rest-Server}
+    \subsubsection{Create appointment on Rest-Server}
+        By POST request you can send an appointment to the server.
+        The appointment must be sent as JSON. Furthermore, a valid username and token must be passed. Where the username
+        already passed indirectly through the appointment.
+        If they are correct, the appointment for the corresponding user is saved on the server.
+    
+    \subsubsection{Edit appointment on Rest-Server}
+        It is possible to process an existing appointment via POST request. To do this, the appointment must be sent to the server as JSON.
+        Furthermore, user name and token are to be handed over. If the transferred appointment exists and the username and token are valid,
+        the appointment is changed on the server. The submitted appointment does not have to be a complete appointment object
+        only the fields that you want to change need to be filled out. In this case, only the ID field of the appointment forms an exception because this is for searching
+        of the appointment to be changed is used.
+        If an error occurs, it will be returned as JSON to the POST request sender.
+
+    \subsubsection{Delete appointment on Rest-Server}
+        To use the feature, you must pass a username, token and the ID of the appointment to be deleted.
+        On the server it is checked if there is an appointment for the given user and if the given token is valid.
+        If this is the case, the appointment will be deleted.
+        If an error occurs, it will be returned as JSON to the POST request sender.
+    
+    \subsubsection{Create group on Rest-Server}
+        On the server, a group can be created by POST request.
+        In this case, the group to be created must be transferred as JSON.
+        Furthermore, username and token must be transferred. The username is already indirectly through
+        submitted the specified group.
+        This information is used to check whether the user exists and the identity
+        determined by token. It will then, if the checks were successful,
+        created a group for the user. The owner of the group is the creator.
+        In the event of an error or success, the appropriate response is sent to the POST request sender
+        sent back as JSON.
+
+    \subsubsection{Delete group on Rest-Server}
+        To use this feature, the group name, username and token must be passed by POST request.
+        The submitted user must be the creator of the group.
+        If these conditions are met, the group will be deleted and the success will be returned via JSON.
+        If the deletion fails, an error message is returned as JSON.
+
+
+    \subsubsection{Get all groups of user}
+        The server responds to a POST REQUEST. For the request, a username as well as a valid token must be transferred via JSON.
+        If this user exists, all groups will be returned where the user is the owner.
+        
+    \subsubsection{Get all appointments}
+        To use this functionality, a POST request with username and token must be sent to the rest server.
+        If the username and token are valid, all appointments will be sent back to the sender as JSON.
+        In the event of an error, the error is returned to the sender as JSON.
+    
+    \subsubsection{Login user}      
+        In order to use this functionality of the remainder server, a POST request must be used
+        JSON file will be sent with valid username and password.
+        If the password and username were valid, a token will be returned.
+        In case of failure, an error message will be sent back to the sender as JSON.
+
+    \subsubsection{Logout user}
+        In order to use this functionality of the remainder server, a JSON with username must be sent by POST request
+        as well as tokens are sent. If token and username turn out to be valid
+        the success as JSON sent back to the transmitter. Failure will result in an error message to the sender
+        cleverly.
+    \subsubsection{Check user}
+        With this functionality the server can determine if a username is already in use
+        located. In order to use the functionality of the server, a POST request must be submitted with the one to be checked
+        Usernames are transmitted.
+        The server then returns whether this username is free or already in use.
+
+    \subsection{CalendarGui}
+    \subsubsection{Create appointments}
+        The CalendarGui has a button called AddEvent. Once you have the title, the description, the start and
+        has entered the end time of the appointment, simply press the button AddEvent and below the CalendarView will appear
+        then from when to when the appointment is and the title of the appointment.
+        
+    \subsubsection{Delete appointments}
+        To be able to use this feature, you must first create an appointment. As described above you have an appointment
+        using the AddEvent button, and once the appointment has been added, press the appointment and
+        it then appears small window where Delete stands.
+        
+    \subsubsection{Edit appointments}
+        To be able to use this feature, you must first create an appointment. As described above you have an appointment
+        using the AddEvent button, and once the appointment has been added, press the appointment and
+        it then appears small window where Edit is.
+
+    \subsubsection{Select appointments}
+        Once you have added an appointment, you can click on CalendarView on a date where an appointment
+        has been added and this appears under the CalendarView. The date appearing below can then
+        to be selected.
+    
+    \subsubsection{Show appointments}
+        Once you have added an appointment, you can click on CalendarView on a date where an appointment
+        has been added and this appears under the CalendarView. If no date added to a date
+        or no appointment has been selected, then appears under the CalendarView NoEvents.
+            
+    \subsubsection{CalendarViews}
+        There are three different views of the calendar. The first view of this is the month view, where all days of
+        a month view. The second view of the calendar is the week view. In the week view
+        are displayed seven days of a month. You can then use an arrow that is right above the calendar view
+        appears, go to next week. The third view of the calendar is the day view. In the day view
+        The times are displayed from six o'clock in the morning until six in the evening of one day. You can then use an arrow,
+        which appears on the right above the calendar view, go to the next day.
+    
+    \subsection{Login}
+    \subsubsection{Login and sign up interface}      
+        When logging in, a user can enter a username and password.
+        Below the username and the password is a button Send, as soon as you press on this should enter the entered
+        Data should be compared with the data in the database and then it should display the calendar.
+%------------------------------------------------------------------------%
+\end{document}
