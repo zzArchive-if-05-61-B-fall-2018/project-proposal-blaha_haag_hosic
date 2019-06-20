@@ -5,7 +5,7 @@ function checkIfUserExistsAction(request, response) {
 
     if(jsonRequest.username === undefined) {
         console.log("Unvalid request: " + JSON.stringify(request.body));
-        response.status(500).json('{"error": "Unvalid request"}');
+        response.status(500).json({"error": "Unvalid request"});
         return;
     }
     username = jsonRequest.username;

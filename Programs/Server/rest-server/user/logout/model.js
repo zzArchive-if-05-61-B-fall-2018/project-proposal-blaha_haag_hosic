@@ -10,7 +10,7 @@ function logout(username, token) {
                 console.log("Invalid username");
                 reject({error: "User or token is wrong", code: 560 });
             } else {
-                if(token !== null && user.token === token) {
+                if(user !== null && token !== null && user.token === token) {
                     user.token = null;
                     user.save();
                     resolve( { result: "logout" });
