@@ -58,8 +58,8 @@
         \item Delete appointment on Rest-Server
         \item Create group on Rest-Server
         \item Delete group on Rest-Server
-        \item Get group from User
-        \item Get all appointments
+        \item Get all groups from user
+        \item Get all appointments from user
         \item Login user 
         \item Logout user 
         \item Check user
@@ -116,9 +116,9 @@
         Falls diese Bedingungen erfüllt werden, wird die Gruppe gelöscht und per JSON der Erfolg zurückgegeben.
         Wenn das Löschen fehlschlägt, so wird eine Fehlermeldung als JSON zurückgegeben. 
 
-    \subsubsection{Get groups of user}
+    \subsubsection{Get all groups of user}
         Der Server antwortet auf einen POST-REQUEST. Bei dem Request muss per JSON ein Username übergeben werden.
-        Falls dieser User existiert, werden alle Gruppen zurückgegeben, zu denen der User gehört.
+        Falls dieser User existiert, werden alle Gruppen zurückgegeben, bei denen der User Besitzer ist.
         
     \subsubsection{Get all appointments}
         Um diese Funktionalität zu verwenden, muss an den Rest-Server ein POST-Request mit Username und Token geschickt werden.

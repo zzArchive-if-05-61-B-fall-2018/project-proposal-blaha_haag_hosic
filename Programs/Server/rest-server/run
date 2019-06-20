@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Starte den Server"
+node index.js
+

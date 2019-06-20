@@ -58,9 +58,10 @@
         Falls sie Docker verwenden möchten, dann sehen sie auf folgender Seite nach \url{https://hub.docker.com/_/mongo}.
 
     \subsection{Installation der benötigten Pakete für den Rest-Server}
-        Wechseln Sie in das Root-Verzeichnis des Rest-Servers und geben sie im Terminal npm i ein.
+        Wechseln Sie in das Root-Verzeichnis des Rest-Servers und geben Sie im Terminal npm i ein.
         Somit werden alle benötigten Pakete installiert.
         Informationen zu npm finden Sie auf \url{https://www.npmjs.com/get-npm}.
+        Für den Betrieb des Servers wird node verwendet, Informationen darüber finden Sie auf \url{https://nodejs.org/}
 
     \section{Konfiguration}
         In der /database/conifg.json Datei des Servers können Datenbankeinstellungen des Servers geändert werden.
@@ -86,19 +87,21 @@
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         \url{http://localhost:8080/user/register}.
         Struktur des JSON-Objekts: \{"username":"<username>", "password":"<password>"\}
+        Das Passwort wird auf dem Server verschlüsselt gespeichert.
 
     \subsection{User login}
-        Einloggen eines Users auf dem Server.
+        Einloggen eines Users auf dem Server. Beim Login wird ein Token für den Benutzer angelegt.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         \url{http://localhost:8080/user/login}.
         Struktur des JSON-Objekts: \{"username":"<username>", "password":"<password>"\}
-        Bei erfolgreichen Login wird ein Token zurückgegeben. 
+        Bei erfolgreichen Login wird ein Token zurückgegeben. Der Token wird als Berechtigung für einige Funktionen auf dem Server benötigt.
     
     \subsection{Logout}
         Ausloggen eines Users auf dem Server.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         \url{http://localhost:8080/user/logout}.
         Struktur des JSON-Objekts: \{"username":"<username>", "token":"<token>"\}
+        Wenn dies erfolgreich ist, so gibt es für den Benutzer keinen gültigen Token mehr.
 
     \subsection{Check if user exists}
         Überprüfen, ob ein Username bereits vergeben ist.
@@ -110,22 +113,25 @@
         Erstellen eines Termins für einen User.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         \url{http://localhost:8080/appoitnment/create}.
-        Struktur des JSON-Objects: {"appointment": \{"username": "<username>", "date": "<date>", "duration": "<number>", "name": "<name>"}, "token": "<token>"\}
+        Struktur des JSON-Objects: \{"appointment": \{"username": "<username>", "date": "<date>", "duration": "<number>", "name": "<name>"}, "token": "<token>"\}
+        Der Token muss ein gültiger Token des Benutzers sein, dessen Username im Appointment verwendet wurde.
 
     \subsection{Delete Appointment}
         Löschen eines Termines eines Users.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         \url{http://localhost:8080/appoitnment/delete}.
         Struktur des JSON-Objects: \{"username": "<username>", "token": "<token>", "appointmentid": "<appointmentid>" \}
+        Der übergebene Username muss der Besitzer des Termines sein sowie der Token muss gültig sein.
 
     \subsection{Edit Appointment}
         Editieren eines Termins eines Users.
-        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet \url{http://localhost:8080/appoitnment/delete}.
-        Struktur des JSON-Objects: {"appointment": {"username": "<username>"[, "date": "<date>"][, "duration": "<number>"][, "name": "<name>"]}
-        Die in [] geschriebenen Attribute sind optional!
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet \url{http://localhost:8080/appoitnment/edit}.
+        Struktur des JSON-Objects: {"appointment": {"username": "<username>"[, "date": "<date>"][, "duration": "<number>"][, "name": "<name>"], "token": "<token>"}
+        Die in {[]} geschriebenen Attribute sind optional!
+    
 
     \subsection{Get all appointments}
-        Alle Termine abfragen eines Users.
+        Alle Termine eines Users abfragen.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         http://localhost:8080/appoitnment/get.
         Struktur des JSON-Objects: { "username": "<username>", "token": "<token>"}
@@ -135,16 +141,17 @@
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
         \url{http://localhost:8080/group/create}.
         Struktur des JSON-Objects: {"group": {"owner": "<username>", "name": "<groupName>" }, "token": "<token>"}
+        Der übergebene Token muss ein gültiger Token für den übergebenen username sein.
 
     \subsection{Delete group}
         Eine Gruppe erstellen.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
-        \url{http://localhost:8080/group/create}.
+        \url{http://localhost:8080/group/delete}.
         Struktur des JSON-Objects: {"group": {"owner": "<username>", "name": "<groupName>" }, "token": "<token>"}
 
     \subsection{Get groups}
         Alle Gruppen bekommen für den der User der Besitzer ist.
         Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
-        \url{http://localhost:8080/group/create}.
+        \url{http://localhost:8080/group/get}.
         Struktur des JSON-Objects: \{"username": "<username>", "token": "<token>"\}
 \end{document}
