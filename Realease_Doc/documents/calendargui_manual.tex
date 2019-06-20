@@ -1,0 +1,64 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}  
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\renewcommand{\baselinestretch}{1.15} 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\headmark}
+\ifoot[]{\author}
+\ofoot[]{\pagemark}
+\setheadsepline[\textwidth]{0.1pt}
+\setkomafont{pageheadfoot}{\sffamily}
+\setkomafont{pagenumber}{\bfseries}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Manual for CalendarGui}
+\author{Johann Haag, Tarik Hosic und Simon Blaha}
+\date{18.6.2019, Leonding}
+
+
+\begin{document}
+    \maketitle
+    \begin{flushleft}
+    \begin{tabular}{|l|l|}
+    \hline
+    Project Name & Smart Organizer \\ \hline
+    Project Leader & Simon Blaha \\ \hline
+    Version & 1.0\\ \hline
+    Document state & In process \\ \hline
+    \end{tabular}
+    \end{flushleft}
+
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+
+    \section{Installation}
+    \subsection{Creating the Ionic-App}
+        First you have to install NodeJS.
+        Then enter the npm install -g ionic command in the console to install Ionic.
+        Finally, enter into the console ionic start myApp tabs to create a new Ionic app called myApp.
+
+    \section{Testing the Installation}
+        In the console, type cd myApp to get to the directory.
+        Then enter ionic serve --open.
+        Finally, the created Ionic App will be displayed in the web browser.
+%------------------------------------------------------------------------%
+\end{document}
