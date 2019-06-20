@@ -1,0 +1,90 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}  
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\renewcommand{\baselinestretch}{1.15} 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\headmark}
+\ifoot[]{\author}
+\ofoot[]{\pagemark}
+\setheadsepline[\textwidth]{0.1pt}
+\setkomafont{pageheadfoot}{\sffamily}
+\setkomafont{pagenumber}{\bfseries}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Planning Review}
+\author{Johann Haag, Tarik Hosic und Simon Blaha}
+\date{18.6.2019, Leonding}
+
+
+\begin{document}
+    \maketitle
+    \begin{flushleft}
+    \begin{tabular}{|l|l|}
+    \hline
+    Project Name & Smart Organizer \\ \hline
+    Project Leader & Simon Blaha \\ \hline
+    Version & 1.0\\ \hline
+    Document state & In process \\ \hline
+    \end{tabular}
+    \end{flushleft}
+
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+
+    \section{Sprints}
+    \subsection{Sprint 1 - 16.05.2019}
+    \begin{itemize}
+        \item Login on Rest-Server
+        \item Create CalendaeView
+    \end{itemize}
+
+    \subsection{Sprint 2 - 23.05.2019}
+    - Added appointment function to server
+    \begin{itemize}
+        \item Create and delete appointments on Rest-Server
+        \item Register user on Rest-Server
+        \item Create appointments on CalendarGui
+    \end{itemize}
+
+    \subsection{Sprint 3 - 30.05.2019}
+    - Added advanced appointment functions to server
+    \begin{itemize}
+        \item REST get all appointments from server
+        \item Edit appointments on server
+        \item Delete and Edit appointments on CalendarGui
+    \end{itemize}
+
+    \subsection{Sprint 4 - 06.06.2019}
+    - Refactoring
+    \begin{itemize}
+        \item Utility and project structure change
+        \item Refactoring of Rest-Server Code
+    \end{itemize}
+
+    \subsection{Sprint 5 - 13.06.2019}
+    - Added group functions to server
+    \begin{itemize}
+        \item create, delete and get group from Rest-Server
+    \end{itemize}
+
+%------------------------------------------------------------------------%
+\end{document}
