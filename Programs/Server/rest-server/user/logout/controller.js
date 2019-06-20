@@ -14,7 +14,7 @@ function logoutAction(request, response) {
         response.json(result);
         console.log("Logout succeeded");
     }, function(error) {
-        response.status(500).json(error);
+        response.status(550).json(error);
         console.log("Logout failed");
     });
 } 

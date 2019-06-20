@@ -12,7 +12,7 @@ function createAppointmentAction(request, response) {
         response.json(result);
     }, function(error) {
         console.log(error);
-        response.status(500).json(error);
+        response.status(550).json(error);
     });
 }
 
@@ -28,7 +28,7 @@ function deleteAppointmentAction(request, response) {
         response.json(result);
     }, function(error) {
         console.log(error);
-        response.status(500).json(error);
+        response.status(550).json(error);
     });
 }
 
@@ -45,7 +45,7 @@ function editAppointmentAction(request, response) {
         response.json(result);
     }, function(error) {
         console.log(error);
-        response.status(500).json(error);
+        response.status(550).json(error);
     });
 }
 
@@ -57,7 +57,7 @@ function getAllAppointmentsFromUserAction(request, response) {
             response.json(result);
         }, function(error) {
             console.log(jsonRequest.username + " tried to get all appointments. Error: " + JSON.stringify(error));
-            response.json(error);
+            response.status(550).json(error);
         });
     } else {
         console.log("Unvalid request: " + JSON.stringify(request.body));

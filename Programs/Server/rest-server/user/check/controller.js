@@ -15,7 +15,7 @@ function checkIfUserExistsAction(request, response) {
     model.checkIfUserExists(username).then(function(result) {
         response.json(result);
     }, function(error) {
-        response.json(error);
+        response.status(550).json(error);
     });
 } 
 

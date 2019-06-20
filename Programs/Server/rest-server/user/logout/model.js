@@ -8,7 +8,7 @@ function logout(username, token) {
         User.findOne({username: username}, function(error, user) {
             if(error) {
                 console.log("Invalid username");
-                reject({ error: "Invalid token or username" });
+                reject({error: "User or token is wrong", code: 560 });
             } else {
                 if(token !== null && user.token === token) {
                     user.token = null;
@@ -16,7 +16,7 @@ function logout(username, token) {
                     resolve( { result: "logout" });
                 } else {
                     console.log("Invalid token");
-                    reject({error: "Invalid token or username"});
+                    reject({error: "User or token is wrong", code: 560 });
                 }
             }
         });

@@ -1,5 +1,5 @@
 Zum Testen:
-    0. Ausführen von: npm i 
+    0. Ausführen von: npm i, dafür muss das Notwendige für npm installiert sein
     1. Mongodb muss laufen und der im Programm angegebene Pfad muss stimmen!
     2. Server starten mit: node index.js
     
@@ -18,7 +18,17 @@ Zum Testen:
     CheckIfUserExists:
         curl -d '{"username":"<username>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/user/check
     GetAllAppointments:
-        curl -d '{ "username": "<username>", "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/getAll
+        curl -d '{ "username": "<username>", "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/appointment/get
+    CreateGroup:
+        curl -d '{"group": {"owner": "<username>", "name": "<groupName>" }, "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/group/create
+    DeleteGroup:
+        curl -d '{"username": "<username>", "token": "<token>", "groupname": "<groupname>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/group/delete
+    GetGroups:
+        curl -d '{"username": "<username>", "token": "<token>"}' -H "Content-Type: application/json" -X POST http://localhost:8080/group/get
+    
+
+
+
 
 Einrichten der Datenbank mit Testwerten:
     Mongodb installieren

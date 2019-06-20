@@ -10,15 +10,14 @@ require('../../database/config');
 function generateToken() {
     let uid = randtoken.uid;
     let token = uid(4);
-    //return token;
-    return "TOKEN";
+    return token;
 }
 
 function getToken(username, password) {
     return new Promise(function(resolve, reject) {
         User.findOne({username: username}, function(err, user) {
             if(err) {
-                reject({error: "Invalid username or password"});
+                reject({error: "User or password is wrong", code: 561 });
             } else {
                 const res = user !== null ? bcryp.compareSync(password, user.password) : false;
                 if(res && user.username == username) {
@@ -26,7 +25,7 @@ function getToken(username, password) {
                     user.token = token;
                     user.save(); 
                     resolve({ username: username, token: user.token });
-                } else reject({error: "Invalid username or password"});
+                } else reject({error: "User or password is wrong", code: 561 });
             }
         });
     });

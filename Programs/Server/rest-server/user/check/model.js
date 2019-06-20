@@ -8,7 +8,7 @@ function checkIfUserExists(username) {
                 reject(error);
             } else {
                 if(result !== null)
-                    reject({result: "User already exists" });
+                    reject({error: "User already exists", code: 505 });
                 else {
                     resolve({ result: "Username is not in use" });
                 }  

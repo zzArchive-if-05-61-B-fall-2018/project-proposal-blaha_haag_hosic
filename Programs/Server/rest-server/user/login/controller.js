@@ -14,7 +14,7 @@ function loginAction(request, response) {
         response.json(result);
         console.log("Login succeeded");
     }, function(error) {
-        response.status(500).json(error);
+        response.status(550).json(error);
         console.log("Login failed");
     });
 } 

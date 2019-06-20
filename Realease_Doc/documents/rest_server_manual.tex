@@ -9,12 +9,13 @@
 \usepackage{graphicx}
 \usepackage{lmodern}
 \usepackage[automark]{scrpage2}
+\usepackage{listings}
 \usepackage{geometry}  
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{epstopdf}
 \usepackage{caption}
-\usepackage{floatrow}
+\usepackage{floatrow}\usepackage{hyperref}
 \usepackage[table]{xcolor}
 \renewcommand{\baselinestretch}{1.15} 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -53,31 +54,97 @@
     \section{Installation}
     \subsection{Aufsetzen der MongoDB}
         Eine MongoDB kann standardmäßig auf den Computer installiert werden. Es bietet sich auch die Möglichkeit an, die MongoDB per Docker zu betreiben.
-        Wenn sie die MongoDB auf den Rechner installieren möchten, sehen sie folgenden Link .....
-        Falls sie Docker verwenden möchten, dann sehen sie auf folgender Seite nach ....
+        Wenn sie die MongoDB auf den Rechner installieren möchten, sehen sie auf folgender Seite nach \url{https://www.mongodb.com}.
+        Falls sie Docker verwenden möchten, dann sehen sie auf folgender Seite nach \url{https://hub.docker.com/_/mongo}.
+
+    \subsection{Installation der benötigten Pakete für den Rest-Server}
+        Wechseln Sie in das Root-Verzeichnis des Rest-Servers und geben sie im Terminal npm i ein.
+        Somit werden alle benötigten Pakete installiert.
+        Informationen zu npm finden Sie auf \url{https://www.npmjs.com/get-npm}.
+
+    \section{Konfiguration}
+        In der /database/conifg.json Datei des Servers können Datenbankeinstellungen des Servers geändert werden.
+        Hier kann unter dbURI eine andere URI angegeben werden, falls man keinen Localhost verwendet.
+        Bei der Standardinstallation ist immer Localhost und der standard Port für MongoDB eingetragen.
+        Des Weiteren ist es auch möglich, die Fehlerausgaben zu ändern.
 
     \section{Inbetriebnahme des Rest-Servers}
         Um den Server zu starten gibt es mehrere Wege. 
         Zum einen können sie per CMD in das Root-Verzeichnis des Servers wechseln und node index.js ausführen oder 
-        sie führen das Script run_server.sh aus. Hierbei wird jedoch die Skriptsprache Bash benötigt.
+        Sie führen das Script run aus. Hierbei wird jedoch die Skriptsprache Bash benötigt.
         Bei der Inbetriebnahme werden automatisch die benötigten Collections auf der MongoDB erstellt. 
-        Es wird im Log ausgegeben, ob ein Fehler aufgetreten ist.
-        Der Server kann einfach mit STRG+C im Terminal beendet werden.
+        Falls alles korrekt gestartet wird, wird ausgegeben, dass der Server auf dem Port 8080 lauscht
+        und dass eine Verbindung zur MongoDB hergestellt wurde.
+        Der Server kann einfach mit STRG+C im Terminal beendet werden.    
+    \section{Verwendung des Servers}
+        Es wird davon ausgegangen, dass der Server auf Localhost läuft.
+        Falls etwas schiefläuft, wird immer ein JSON-Objekt mit den Attributen error und code zurückgegeben.
+        Code besitzt den Wert des Fehlercodes und im Attribut error steht die Fehlermeldung.
+        Wenn eine Abfrage erfolgreich ist, so wird ein JSON-Objekt mit einem Attribut result zurückgegeben.
+    \subsection{User registrieren}
+        Registriert einen neuen User auf dem Server.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/user/register}.
+        Struktur des JSON-Objekts: \{"username":"<username>", "password":"<password>"\}
 
-    \section{Konfiguration}
-        In der Conifg.json Datei des Servers können Einstellungen des Servers geändert werden.
-        So kann hier die Portnummer sowie der Pfad zur MongoDB geändert werden.
-        Bei der Standardinstallation ist immer Localhost und der standard Port für MongoDB eingetragen.
+    \subsection{User login}
+        Einloggen eines Users auf dem Server.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/user/login}.
+        Struktur des JSON-Objekts: \{"username":"<username>", "password":"<password>"\}
+        Bei erfolgreichen Login wird ein Token zurückgegeben. 
+    
+    \subsection{Logout}
+        Ausloggen eines Users auf dem Server.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/user/logout}.
+        Struktur des JSON-Objekts: \{"username":"<username>", "token":"<token>"\}
 
-    \section{Testen der Installation}
-        Im Ordner des Rest-Servers liegt ein Script namens test_rest_server.sh vor.
-        Dieser Script kann nur auf Betriebssystemen verwendet werden, die das Programm ... installiert haben sowie die Skriptsprache Bash unterstützen.
-        Wenn sie diesen Script verwenden, werden Testdaten an den Rest-Server geschickt und die abgefragt.
-        Deswegen ist es gut, wenn man eine eigene Datenbank für das Testen erstellt.
-        Um die Testdaten wieder zu löschen, ist es am besten die erstellten Collections der MongoDB zu löschen.
+    \subsection{Check if user exists}
+        Überprüfen, ob ein Username bereits vergeben ist.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/user/check}.
+        Struktur des JSON-Objekts: \{"username":"<username>"\}
 
-    \section{Troubleshooting}
-        \subsection{Keine Verbindung zur Datenbank möglich}
+    \subsection{Create Appointment}
+        Erstellen eines Termins für einen User.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/appoitnment/create}.
+        Struktur des JSON-Objects: {"appointment": \{"username": "<username>", "date": "<date>", "duration": "<number>", "name": "<name>"}, "token": "<token>"\}
 
-%------------------------------------------------------------------------%
+    \subsection{Delete Appointment}
+        Löschen eines Termines eines Users.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/appoitnment/delete}.
+        Struktur des JSON-Objects: \{"username": "<username>", "token": "<token>", "appointmentid": "<appointmentid>" \}
+
+    \subsection{Edit Appointment}
+        Editieren eines Termins eines Users.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet \url{http://localhost:8080/appoitnment/delete}.
+        Struktur des JSON-Objects: {"appointment": {"username": "<username>"[, "date": "<date>"][, "duration": "<number>"][, "name": "<name>"]}
+        Die in [] geschriebenen Attribute sind optional!
+
+    \subsection{Get all appointments}
+        Alle Termine abfragen eines Users.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        http://localhost:8080/appoitnment/get.
+        Struktur des JSON-Objects: { "username": "<username>", "token": "<token>"}
+
+    \subsection{Create group}
+        Eine Gruppe erstellen.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/group/create}.
+        Struktur des JSON-Objects: {"group": {"owner": "<username>", "name": "<groupName>" }, "token": "<token>"}
+
+    \subsection{Delete group}
+        Eine Gruppe erstellen.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/group/create}.
+        Struktur des JSON-Objects: {"group": {"owner": "<username>", "name": "<groupName>" }, "token": "<token>"}
+
+    \subsection{Get groups}
+        Alle Gruppen bekommen für den der User der Besitzer ist.
+        Hierfür muss ein JSON-Objekt per Post-Request an den Server geschickt werden. Der Pfad für den Post-Request lautet
+        \url{http://localhost:8080/group/create}.
+        Struktur des JSON-Objects: \{"username": "<username>", "token": "<token>"\}
 \end{document}

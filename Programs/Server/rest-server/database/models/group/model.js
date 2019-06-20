@@ -9,10 +9,7 @@ const groupSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    members: [{
-        type: String,
-        required: true
-    }],
+    members: [String]
 });
 
-module.exports = mongoose.model('Group', userSchema);
+module.exports = mongoose.model('Group', groupSchema);

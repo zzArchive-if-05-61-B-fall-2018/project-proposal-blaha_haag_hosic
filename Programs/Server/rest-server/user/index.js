@@ -11,7 +11,7 @@ router.use("/logout", logoutRouter);
 router.use("/check", checkRouter);
 
 router.use('*', function(req, res) {
-    res.status(500).json({ error: "Unvalid route" });
+    res.status(520).json({ error: "Unvalid route" });
 });
 
 module.exports = {
