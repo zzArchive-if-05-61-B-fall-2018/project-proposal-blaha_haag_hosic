@@ -51,13 +51,43 @@
 
 
     \section{Tests}                             
-    \subsection{REST-Server}
+    \subsection{REST Server}
     \subsubsection{Test 1/ Register User}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Register non existing user on REST-Server per POST Request and with valid JSON-Object & The user will be created on the server and the server send a JSON-Object with the username of the created user.\\  \hline
-            2 & Register an existing user on REST-Server per POST Request and with valid JSON-Object & The user will not be created on the server send an error with errocode back.\\  \hline
+            1 & Register non existing user on REST server per POST request and with valid JSON-Object & The user will be created on the server and the server send a JSON-Object with the username of the created user.\\  \hline
+            2 & Register an existing user on REST server per POST request and with valid JSON-Object & The user will not be created on the server send an error with error code back.\\  \hline
+            3 & Send incorrect JSON object to the REST server per Post request & The server answers with a JSON-Object with an error (Unvalid request).\\  \hline
         \end{tabular}
 
+    \subsubsection{Test 2/ Login User}
+        \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
+            \hline 
+            \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
+            1 & Login existing user with correct password and username & The server will answers with an JSON-Object with a username attribut and a token attribut.\\  \hline
+            2 & Try to login non existing user on REST server per POST request & The server answers with a JSON-Object with an error and error code.\\  \hline
+            3 & Try to login an existing user on REST server per POST request with wrong password & The server answers with a JSON-Object with an error and error code.\\  \hline
+            4 & Send JSON object with too many/less attributes to the REST server per Post request & The server answers with a JSON-Object with an error (Unvalid request).\\  \hline
+        \end{tabular}
+
+    \subsubsection{Test 3/ Logout user}
+        \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
+            \hline 
+            \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
+            1 & Logout existing user with correct token and username & The server will answers with an JSON-Object with result that the result logout.\\  \hline
+            2 & Try to logout non existing user on REST server per POST request & The server answers with a JSON-Object with an error and error code.\\  \hline
+            3 & Try to logout an existing user on REST server per POST request with wrong token & The server answers with a JSON-Object with an error and error code.\\  \hline
+            4 & Send JSON object with too many/less attributes to the REST server per Post request & The server answers with a JSON-Object with an error (Unvalid request).\\  \hline
+        \end{tabular}
+
+    \subsubsection{Test 4/ Check if username is in use}
+        \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
+            \hline 
+            \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
+            1 & Check for existing user & The server will answers with an error "User already exists".\\  \hline
+            2 & Check for non existing user & The server answers with an result "Username is not in use".\\  \hline
+            3 & Send JSON object with too many attributes to the REST server per Post request & The server gives a normal answer and irgnores the too many attributes.\\  \hline
+            4 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
+        \end{tabular}
 \end{document}
