@@ -53,7 +53,7 @@
     \section{Feature List}
     \subsection{Rest-Server}
     \begin{itemize}
-        \item Save appointment on Rest-Server
+        \item Create appointment on Rest-Server
         \item Edit appointment on Rest-Server
         \item Delete appointment on Rest-Server
         \item Create group on Rest-Server
@@ -81,9 +81,10 @@
 
     \section{Feature Descriptions}
     \subsection{Rest-Server}
-    \subsubsection{Save appointment on Rest-Server}
+    \subsubsection{Create appointment on Rest-Server}
         Per POST-Request kann man einen Termin an den Server schicken.
-        Der Termin muss als JSON übermittelt werden. Des Weiteren ist ein gültiger Benutzername sowie Token zu übergeben.
+        Der Termin muss als JSON übermittelt werden. Des Weiteren ist ein gültiger Benutzername sowie Token zu übergeben. Wobei der Username 
+        bereits indirekt durch den Termin übergeben wird.
         Wenn diese stimmen, so wird der Termin für den entsprechenden User auf dem Server gespeichert.
     
     \subsubsection{Edit appointment on Rest-Server}
@@ -103,7 +104,8 @@
     \subsubsection{Create group on Rest-Server}
         Auf dem Server kann per POST-Request eine Gruppe erstellt werden.
         Hierbei muss die zu erstellende Gruppe als JSON übertragen werden.
-        Des Weiteren muss Username sowie Token übertragen werden.
+        Des Weiteren muss Username sowie Token übertragen werden. Der Username wird bereits indirekt durch 
+        die angegebene Gruppe übermittelt.
         Mittels dieser Informationen wird überprüft, ob der User existiert und die Identität 
         per Token festgestellt. Es wird anschließend, falls die Überprüfungen erfolgreich waren,
         eine Gruppe für den User erstellt. Der Besitzter der Gruppe ist der Ersteller.
@@ -111,13 +113,13 @@
         als JSON zurückgeschickt.
 
     \subsubsection{Delete group on Rest-Server}
-        Um dieses Feature zu nutzen muss per POST-Request die Gruppen-ID sowie Username und Token übergeben werden.
+        Um dieses Feature zu nutzen muss per POST-Request die Gruppenname sowie Username und Token übergeben werden.
         Beim übergebenen User muss es sich um den Ersteller der Gruppe handeln.
         Falls diese Bedingungen erfüllt werden, wird die Gruppe gelöscht und per JSON der Erfolg zurückgegeben.
         Wenn das Löschen fehlschlägt, so wird eine Fehlermeldung als JSON zurückgegeben. 
 
     \subsubsection{Get all groups of user}
-        Der Server antwortet auf einen POST-REQUEST. Bei dem Request muss per JSON ein Username übergeben werden.
+        Der Server antwortet auf einen POST-REQUEST. Bei dem Request muss per JSON ein Username als auch ein gültiger Token übergeben werden.
         Falls dieser User existiert, werden alle Gruppen zurückgegeben, bei denen der User Besitzer ist.
         
     \subsubsection{Get all appointments}
