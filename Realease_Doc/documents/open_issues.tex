@@ -1,0 +1,87 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage[automark]{scrpage2}
+\usepackage{geometry}  
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage[table]{xcolor}
+\renewcommand{\baselinestretch}{1.15} 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\headmark}
+\ifoot[]{\author}
+\ofoot[]{\pagemark}
+\setheadsepline[\textwidth]{0.1pt}
+\setkomafont{pageheadfoot}{\sffamily}
+\setkomafont{pagenumber}{\bfseries}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Known Issues}
+\author{Johann Haag, Tarik Hosic und Simon Blaha}
+\date{18.6.2019, Leonding}
+
+
+\begin{document}
+    \maketitle
+    \begin{flushleft}
+    \begin{tabular}{|l|l|}
+    \hline
+    Project Name & Smart Organizer \\ \hline
+    Project Leader & Simon Blaha \\ \hline
+    Version & 1.0\\ \hline
+    Document state & In process \\ \hline
+    \end{tabular}
+    \end{flushleft}
+
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+
+    \section{Known Issues List}
+    \subsection{Rest-Server}
+    \begin{itemize}
+        \item Die Fehlerausgaben sind teilweise zu unpräzise 
+        \item Die Ausgaben in der Console beim Server sind teilweise verbugt 
+        \item Die Fehlercodes sind teilweise zu unpräzise gewählt
+    \end{itemize}
+
+    \subsection{CalendarGui}
+    \begin{itemize}
+        \item Das Abfragen der Termine ist über dem Server nicht möglich
+    \end{itemize}
+
+    \subsection{Login}
+    \begin{itemize}
+        \item keine Verbindung zur Datenbank möglich
+    \end{itemize}
+
+    \section{Missing Features}
+    \subsection{Rest-Server}
+    \begin{itemize}
+        \item Komplexere Gruppenfunktionen
+        \item Abfragen von Terminen über einen bestimmten Zeitraum 
+        \item Keine Überprüfung für überlappende Termine 
+        \item Keine HTTPs Verbindung 
+        \item Detailierterere Konfigurationsdatei
+    \end{itemize}
+    \subsection{CalendarGui}
+    \begin{itemize}
+        \item Gruppenfunktionen
+    \end{itemize}
+
+%------------------------------------------------------------------------%
+\end{document}
+© 2019 GitHub, Inc.
