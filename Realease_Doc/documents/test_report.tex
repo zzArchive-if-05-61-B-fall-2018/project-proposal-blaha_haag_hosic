@@ -58,27 +58,27 @@
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Register non existing user on REST server per POST request and with valid JSON-Object & The user will be created on the server and the server send a JSON-Object with the username of the created user.\\  \hline
             2 & Register an existing user on REST server per POST request and with valid JSON-Object & The user will not be created on the server send an error with error code back.\\  \hline
-            3 & Send incorrect JSON object to the REST server per Post request & The server answers with a JSON-Object with an error (Unvalid request).\\  \hline
+            3 & Send incorrect JSON object to the REST server per Post request & The server responses with an error (Unvalid request).\\  \hline
         \end{tabular}
 
     \subsubsection{Test 2 - Login User}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Login existing user with correct password and username & The server will answer with an JSON-Object with a username attribut and a token attribut.\\  \hline
-            2 & Try to login non existing user on REST server per POST request & The server answers with a JSON-Object with an error and error code.\\  \hline
-            3 & Try to login an existing user on REST server per POST request with wrong password & The server answers with a JSON-Object with an error and error code.\\  \hline
-            4 & Send JSON object with too many/less attributes to the REST server per Post request & The server answers with a JSON-Object with an error (Unvalid request).\\  \hline
+            1 & Login existing user with correct password and username & The server will response with an JSON-Object with a username attribut and a token attribut.\\  \hline
+            2 & Try to login non existing user on REST server per POST request & The server responses with an error and error code.\\  \hline
+            3 & Try to login an existing user on REST server per POST request with wrong password & The server responses with an error and error code.\\  \hline
+            4 & Send JSON object with too many/less attributes to the REST server per Post request & The server responses with an error (Unvalid request).\\  \hline
         \end{tabular}
 
     \subsubsection{Test 3 - Logout User}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Logout existing user with correct token and username & The server will answer with a JSON-Object with result that the result logout.\\  \hline
-            2 & Try to logout non existing user on REST server per POST request & The server answers with a JSON-Object with an error and error code.\\  \hline
-            3 & Try to logout an existing user on REST server per POST request with wrong token & The server answers with a JSON-Object with an error and error code.\\  \hline
-            4 & Send JSON object with too many/less attributes to the REST server per Post request & The server answers with a JSON-Object with an error (Unvalid request).\\  \hline
+            1 & Logout existing user with correct token and username & The server will response with a JSON object with an result attribut.\\  \hline
+            2 & Try to logout non existing user on REST server per POST request & The server responses  with an error and error code.\\  \hline
+            3 & Try to logout an existing user on REST server per POST request with wrong token & The server responses with an error and error code.\\  \hline
+            4 & Send JSON object with too many/less attributes to the REST server per Post request & The server responses JSON object with an error (Unvalid request).\\  \hline
         \end{tabular}
 
     \subsubsection{Test 4 - Create Appointment}
@@ -87,26 +87,26 @@
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Create appointment with valid token and username & The server creates the appointment and gives back a result.\\  \hline
             2 & Create appoitnment with invalid token or invalid username & The server sends an error.\\  \hline
-            3 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
+            3 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error.\\  \hline
         \end{tabular}
 
     \subsubsection{Test 5 - Delete appointment}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Send valid JSON-Object with valid username and token and appointmentid & The server will answer with a result.\\  \hline
-            2 & Send valid JSON-Object with invalid username or token & The server will answer with an error that username or token is not correct.\\  \hline
-            3 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
+            1 & Send valid JSON-Object with valid username and token and appointmentid & The server will response with a result.\\  \hline
+            2 & Send valid JSON-Object with invalid username or token & The server will response with an error that username or token is not correct.\\  \hline
+            3 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error.\\  \hline
         \end{tabular}
 
     \subsubsection{Test 6 - Edit appointment}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Edit existing appointment with valid JSON-Object & The server will answer with a result.\\  \hline
-            2 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
-            3 & Edit existing appointment with valid JSON-Object but the user is not the owner of the appointment& The server will answer with an error.\\  \hline
-            4 & Edit non existing appointment & The server will answer with an error.\\  \hline
+            1 & Edit existing appointment with valid JSON-Object & The server will response with an result.\\  \hline
+            2 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error.\\  \hline
+            3 & Edit existing appointment with valid JSON-Object but the user is not the owner of the appointment& The server will response with an error.\\  \hline
+            4 & Edit non existing appointment & The server will response with an error.\\  \hline
         \end{tabular}
 
     \subsubsection{Test 7 - Get all appointments}
@@ -115,16 +115,16 @@
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Send valid JSON object with valid token and username & The server will send all appointments of the given user.\\  \hline
             2 & Send valid JSON object with invalid token or invalid username & The server will send an error.\\  \hline
-            3 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
+            3 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error.\\  \hline
         \end{tabular}
 
     \subsubsection{Test 8 - Create Group}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Send valid JSON object with valid token and username and valid name & The server will send a result and will create the group.\\  \hline
+            1 & Send valid JSON object with valid token and username and valid name & The server will send an result and will create the group.\\  \hline
             2 & Send valid JSON object with invalid token or invalid username or existing name & The server will send an error.\\  \hline
-            3 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
+            3 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error.\\  \hline
         \end{tabular}
 
     \subsubsection{Test 9 - Delete Group}
@@ -133,7 +133,7 @@
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Send valid JSON object with valid token and username and valid name and valid groupname & The server will send a result and will delete the group.\\  \hline
             2 & Send valid JSON object with invalid token or invalid username or existing name & The server will send an error.\\  \hline
-            3 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error.\\  \hline
+            3 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error.\\  \hline
         \end{tabular}
 
     \subsubsection{Test 10 - Get Group}
@@ -141,49 +141,56 @@
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Send valid username and valid token & The server will send all groups in which the user is the owner. \\  \hline
-            2 & Send JSON object with too less attributes to the REST server per Post request & The server answers with "Unvalid request" error. \\  \hline
-            3 & Send invalid username or invalid token & The server will answer with an error. \\ \hline
+            2 & Send JSON object with too less attributes to the REST server per Post request & The server responses with "Unvalid request" error. \\  \hline
+            3 & Send invalid username or invalid token & The server will response with an error. \\ \hline
         \end{tabular}
 
     \subsubsection{Test 11 - Path}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
-            1 & Send a JSON object to a non existing path & The server will answer with an error and error code. \\ \hline
+            1 & Send a JSON object to a non existing path & The server will response with an error and error code. \\ \hline
+        \end{tabular}
+
+        \subsubsection{Test 12 - Invalid JSON object}
+        \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
+            \hline 
+            \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
+            1 & Send a invalid JSON object & The server should response with an error. \\ \hline
         \end{tabular}
                            
     \subsection{CalendarGUI}
-    \subsubsection{Test 1/ Create appointments}
+    \subsubsection{Test 1 - Create appointments}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Once you have the title, the description, the start and has entered the end time of the appointment, simply press the button AddEvent. & As soon as you press the Add button, the CalendarView will appear then from when to when the appointment is and the title of the appointment. \\  \hline
         \end{tabular}
-    \subsubsection{Test 2/ Delete appointments}
+    \subsubsection{Test 2 - Delete appointments}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & As described above you have an appointment using the AddEvent button, and once the appointment has been added, press the appointment and it then appears small window where Delete stands. &  As soon as you press the Delete button, the appointment is removed. \\  \hline
         \end{tabular}
-    \subsubsection{Test 3/ Edit appointments}
+    \subsubsection{Test 3 - Edit appointments}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & As described above you have an appointment using the AddEvent button, and once the appointment has been added, press the appointment andit then appears small window where Edit is. &  As soon as you press the edit button, the date will not be edited. The test fails. \\  \hline
         \end{tabular}
-    \subsubsection{Test 4/ Select appointments}
+    \subsubsection{Test 4 - Select appointments}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Once you have added an appointment, you can click on CalendarView on a date where an appointment has been added and this appears under the CalendarView. & The date appearing below can then to be selected. \\  \hline
         \end{tabular}
-    \subsubsection{Test 5/ Show appointments}
+    \subsubsection{Test 5 - Show appointments}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
             1 & Once you have added an appointment, you can click on CalendarView on a date where an appointment has been added and this appears under the CalendarView.& passed \\  \hline
         \end{tabular}
-    \subsubsection{Test 6/ CalendarViews}
+    \subsubsection{Test 6 - CalendarViews}
         \begin{tabular}{|L{2cm}|L{7cm}|L{6cm}|} 
             \hline 
             \cellcolor[gray]{0.5}\textcolor{white}{Test step} & \cellcolor[gray]{0.5}\textcolor{white}{Description} & \cellcolor[gray]{0.5}\textcolor{white}{Expected Result} \\ \hline
