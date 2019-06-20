@@ -60,7 +60,7 @@
         Change to the root directory of the REST server and enter npm i in the terminal.
         Thus, all required packages are installed.
         For information about npm, see \url{https://www.npmjs.com/get-npm}.
-        Node is used to operate the server, for information about node see \url{https://nodejs.org/}
+        Node is used to operate the server, for information about node see \url{https://nodejs.org/}.
 
     \section{Configuration}      
         In the server's /database/conifg.json file, database settings of the server can be changed.
@@ -84,72 +84,72 @@
     \subsection{User Registration}
         Create a new user on the server.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url{http://localhost:8080/user/register}.
-        Structure of the JSON object: \{"username": "<username>", "password": "<password>" \}
+        {http://localhost:8080/user/register}.
+        Structure of the JSON object: \{"username": "<username>", "password": "<password>"\}
         The password is stored encrypted on the server.
 
     \subsection{User Login}
         Login of a user on the server. When logging in, a token is created for the user.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url{http://localhost:8080/user/login}.
-        Structure of the JSON object: \{"username": "<username>", "password": "<password>" \}
+        {http://localhost:8080/user/login}.
+        Structure of the JSON object: \{"username": "<username>", "password": "<password>"\}
         Upon successful login, a token is returned. The token is required as authorization for some functions on the server.
     
     \subsection{User Logout}
         Logging out a user on the server.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url{http://localhost:8080/user/logout}.
+        {http://localhost:8080/user/logout}.
         Structure of the JSON object: \{"username": "<username>", "token": "<token>"\}
         If successful, the user will no longer have a valid token.
 
     \subsection{Check if User exists}
         Check if a username is already taken.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url{http://localhost:8080/user/check}.
+        {http://localhost:8080/user/check}.
         Structure of the JSON object: \{"username": "<username>"\}
 
     \subsection{Create Appointment}
         Create an appointment for a user.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url{http://localhost:8080/appoimentnt/create}.
-        Structure of the JSON object: \{"appointment": \{"username": "<username>", "date": "<date>", "duration": <number>, "name": "<name>"\}," token ":" <token> "\}
+        {http://localhost:8080/appoimentnt/create}.
+        Structure of the JSON object: \{"appointment": \{"username": "<username>", "date": "<date>", "duration": <number>, "name": "<name>"\},"token" : "<token>"\}
         The token must be a valid token of the user whose username was used in the appointment.
 
     \subsection{Delete Appointment}
         Delete an appointment of a user.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url{http://localhost:8080/appoitnment/delete}.
-        Structure of the JSON object: \{"username": "<username>", "token": "<token>", "appointmentid": "<appointmentid>" \}
+        {http://localhost:8080/appoitnment/delete}.
+        Structure of the JSON object: \{"username": "<username>", "token": "<token>", "appointmentid": "<appointmentid>"\}
         The transferred username must be the owner of the appointment and the token must be valid.
 
     \subsection{Edit Appointment}
         Editing an appointment of a user.
-        To do this, a JSON object must be sent to the server by POST request. The path for the POST request is \url{http://localhost:8080/appoitnment/edit}.
+        To do this, a JSON object must be sent to the server by POST request. The path for the POST request is {http://localhost:8080/appoitnment/edit}.
         Structure of the JSON object: \{"appointment": \{"username": "<username>" [, "date": "<date>"] [, "duration": "<number>"] [, "name ":" <name> "]\},"token" :"<token>"\}
-        The attributes written in {[]} are optional!
+        The attributes written in {[ ]} are optional!
     
 
-    \subsection{Get all appointments}
+    \subsection{Get all Appointments}
         Query all appointments of a user.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        http://localhost:8080/appoitnment/get.
+        {http://localhost:8080/appoitnment/get}.
         Structure of the JSON object: \{"username": "<username>", "token": "<token>"\}
 
-    \subsection{Create group}
+    \subsection{Create Group}
         Create a group for a user.
-        To do this, a JSON object must be sent to the server by POST request. The path for the POSTrequest is
-        \url {http://localhost:8080/group/create}.
+        To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
+        {http://localhost:8080/group/create}.
         Structure of the JSON object: \{"group": \{"owner": "<username>", "name": "<groupName>"\}, "token": "<token>"\}
         The passed token must be a valid token for the given username.
 
-    \subsection{Delete group}
+    \subsection{Delete Group}
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url {http://localhost:8080/group/delete}.
+        {http://localhost:8080/group/delete}.
         Structure of the JSON object: \{"group": \{"owner": "<username>", "name": "<groupName>"\}, "token": "<token>"\}
 
-    \subsection{Get groups}
+    \subsection{Get Groups}
         Get all group where the user is the owner of it.
         To do this, a JSON object must be sent to the server by POST request. The path for the POST request is
-        \url {http://localhost:8080/group/get}.
+        {http://localhost:8080/group/get}.
         Structure of the JSON object: \{"username": "<username>", "token": "<token>"\}
 \end{document}
