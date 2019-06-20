@@ -32,7 +32,7 @@
 
 \title{Manual for Rest-Server}
 \author{Johann Haag, Tarik Hosic und Simon Blaha}
-\date{20.12.2018, Leonding}
+\date{18.6.2019, Leonding}
 
 
 \begin{document}
@@ -112,7 +112,7 @@
         Create an appointment for a user.
         To do this, a JSON object must be sent to the server by post request. The path for the post-request is
         \url{http://localhost:8080/appoimentnt/create}.
-        Structure of the JSON object: \{"appointment": \{"username": "<username>", "date": "<date>", "duration": "<number>", "name": "< name> "\}," token ":" <token> "\}
+        Structure of the JSON object: \{"appointment": \{"username": "<username>", "date": "<date>", "duration": <number>, "name": "<name>"\}," token ":" <token> "\}
         The token must be a valid token of the user whose username was used in the appointment.
 
     \subsection{Delete Appointment}
